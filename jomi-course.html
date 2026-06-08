@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>বাংলাদেশ ভূমি মাস্টারক্লাস | জমি সংক্রান্ত A-Z কোর্স</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1a6b3c;
+    --green-dark: #0f4526;
+    --green-light: #2d9e5f;
+    --gold: #c9933a;
+    --gold-light: #f0b84a;
+    --cream: #faf6ef;
+    --dark: #1a1a1a;
+    --gray: #6b7280;
+    --light-gray: #f3f4f6;
+    --white: #ffffff;
+    --red: #dc2626;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Hind Siliguri', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    line-height: 1.7;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 60%, var(--green-light) 100%);
+    padding: 60px 20px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(201,147,58,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: white;
+    padding: 6px 20px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    animation: fadeDown 0.6s ease;
+  }
+  .hero h1 {
+    font-family: 'Tiro Bangla', serif;
+    font-size: clamp(26px, 5vw, 46px);
+    color: white;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    animation: fadeDown 0.7s ease;
+  }
+  .hero h1 span { color: var(--gold-light); }
+  .hero p {
+    color: rgba(255,255,255,0.85);
+    font-size: clamp(15px, 2.5vw, 18px);
+    max-width: 600px;
+    margin: 0 auto 30px;
+    animation: fadeDown 0.8s ease;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+    animation: fadeDown 0.9s ease;
+  }
+  .stat {
+    text-align: center;
+    color: white;
+  }
+  .stat-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold-light);
+    display: block;
+  }
+  .stat-label { font-size: 13px; opacity: 0.8; }
+
+  /* ===== PRICE BOX ===== */
+  .price-box {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 420px;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    animation: fadeUp 1s ease;
+  }
+  .price-old {
+    color: var(--gray);
+    text-decoration: line-through;
+    font-size: 16px;
+  }
+  .price-new {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--green);
+    line-height: 1.1;
+  }
+  .price-new span { font-size: 20px; }
+  .price-note {
+    background: #fef3cd;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #92580a;
+    margin: 12px 0;
+  }
+  .btn-buy {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+  .btn-buy:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(201,147,58,0.4);
+  }
+  .payment-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .pay-chip {
+    background: var(--light-gray);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .pay-chip.bkash { color: #e2136e; background: #fce4ef; }
+  .pay-chip.nagad { color: #f05a28; background: #fde8e0; }
+
+  /* ===== SECTION COMMON ===== */
+  .section { padding: 60px 20px; max-width: 900px; margin: 0 auto; }
+  .section-title {
+    font-family: 'Tiro Bangla', serif;
+    font-size: clamp(22px, 4vw, 32px);
+    color: var(--green-dark);
+    margin-bottom: 8px;
+  }
+  .section-title span { color: var(--gold); }
+  .section-subtitle {
+    color: var(--gray);
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+  .divider {
+    width: 50px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius: 4px;
+    margin-bottom: 30px;
+  }
+
+  /* ===== FOR WHOM ===== */
+  .for-whom-bg { background: var(--green-dark); }
+  .for-whom-bg .section-title { color: white; }
+  .for-whom-bg .section-subtitle { color: rgba(255,255,255,0.7); }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 20px;
+    color: white;
+  }
+  .card-icon { font-size: 28px; margin-bottom: 10px; }
+  .card h3 { font-size: 16px; margin-bottom: 6px; }
+  .card p { font-size: 13px; opacity: 0.75; }
+
+  /* ===== WHAT YOU LEARN ===== */
+  .learn-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 14px;
+  }
+  .learn-item {
+    background: white;
+    border-radius: 12px;
+    padding: 16px 18px;
+    border-left: 4px solid var(--green);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+  }
+  .learn-item::before {
+    content: '✓';
+    background: var(--green);
+    color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ===== VIDEO LIST ===== */
+  .module-block { margin-bottom: 30px; }
+  .module-header {
+    background: var(--green-dark);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px 10px 0 0;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .video-list { border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 10px 10px; overflow: hidden; }
+  .video-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 18px;
+    gap: 14px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+  .video-item:last-child { border-bottom: none; }
+  .video-item:hover { background: #f9fafb; }
+  .video-num {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    background: var(--light-gray);
+    color: var(--gray);
+  }
+  .video-item.free .video-num { background: #dcfce7; color: var(--green); }
+  .video-title { flex: 1; font-size: 14px; line-height: 1.4; }
+  .video-badge {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .badge-free { background: #dcfce7; color: var(--green); }
+  .badge-lock { background: #f3f4f6; color: #9ca3af; }
+  .lock-icon { font-size: 14px; color: #d1d5db; }
+
+  /* ===== PAYMENT MODAL ===== */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 460px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: fadeUp 0.3s ease;
+  }
+  .modal h2 {
+    font-family: 'Tiro Bangla', serif;
+    font-size: 22px;
+    color: var(--green-dark);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .pay-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .pay-tab {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    transition: all 0.2s;
+    font-family: 'Hind Siliguri', sans-serif;
+  }
+  .pay-tab.bkash-tab { color: #e2136e; }
+  .pay-tab.nagad-tab { color: #f05a28; }
+  .pay-tab.active { border-color: currentColor; background: currentColor; color: white !important; }
+  .pay-info {
+    background: var(--light-gray);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  .pay-number {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 8px 0;
+  }
+  .pay-amount {
+    background: #dcfce7;
+    color: var(--green);
+    display: inline-block;
+    padding: 4px 16px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 6px;
+  }
+  .pay-steps {
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+  }
+  .pay-steps p { font-size: 13px; color: #78350f; margin-bottom: 4px; }
+  .pay-steps p strong { color: #92400e; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: var(--dark); }
+  .form-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'Hind Siliguri', sans-serif;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus { border-color: var(--green); }
+  .btn-confirm {
+    width: 100%;
+    background: var(--green);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-confirm:hover { background: var(--green-dark); }
+  .modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 22px;
+    cursor: pointer;
+    color: var(--gray);
+    background: none;
+    border: none;
+  }
+
+  /* ===== SUCCESS MSG ===== */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 20px;
+  }
+  .success-msg.show { display: block; }
+  .success-icon { font-size: 60px; margin-bottom: 16px; }
+  .success-msg h3 { font-size: 22px; color: var(--green); margin-bottom: 10px; }
+  .success-msg p { color: var(--gray); font-size: 14px; }
+
+  /* ===== REVIEWS ===== */
+  .reviews-bg { background: #f8fafc; }
+  .stars { color: #f59e0b; font-size: 18px; margin-bottom: 8px; }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .review-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  }
+  .reviewer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--green);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .reviewer-name { font-weight: 600; font-size: 15px; }
+  .reviewer-loc { font-size: 12px; color: var(--gray); }
+  .review-text { font-size: 14px; color: #374151; line-height: 1.6; }
+
+  /* ===== FAQ ===== */
+  .faq-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .faq-question {
+    padding: 16px 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 15px;
+    background: white;
+    transition: background 0.2s;
+    user-select: none;
+  }
+  .faq-question:hover { background: var(--light-gray); }
+  .faq-arrow { transition: transform 0.3s; font-size: 18px; color: var(--green); }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-answer {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    font-size: 14px;
+    color: var(--gray);
+    background: white;
+  }
+  .faq-item.open .faq-answer { max-height: 200px; padding: 0 18px 16px; }
+
+  /* ===== STICKY BUY BAR ===== */
+  .sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--green-dark);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 500;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+  }
+  .sticky-price { color: white; }
+  .sticky-price strong { font-size: 22px; color: var(--gold-light); }
+  .sticky-price span { font-size: 13px; opacity: 0.8; display: block; }
+  .btn-sticky {
+    background: var(--gold);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-sticky:hover { background: var(--gold-light); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 30px 20px 80px;
+    font-size: 13px;
+  }
+  footer a { color: var(--gold-light); text-decoration: none; }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .hero-stats { gap: 20px; }
+    .price-box { padding: 22px; }
+    .sticky-bar { flex-direction: column; gap: 10px; }
+    .btn-sticky { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🏆 বাংলাদেশের সেরা ভূমি কোর্স</div>
+  <h1>জমি সংক্রান্ত <span>A-Z মাস্টারক্লাস</span><br>একটি কোর্সেই সব শিখুন</h1>
+  <p>খতিয়ান, দাগ নম্বর, দলিল, নামজারি, খাজনা — সব কিছু সহজ বাংলায়। ঘরে বসে শিখুন, নিজেই করুন।</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">৩২টি</span><span class="stat-label">ভিডিও লেসন</span></div>
+    <div class="stat"><span class="stat-num">৫+</span><span class="stat-label">ঘণ্টা কন্টেন্ট</span></div>
+    <div class="stat"><span class="stat-num">৫টি</span><span class="stat-label">ফ্রি ভিডিও</span></div>
+    <div class="stat"><span class="stat-num">লাইফটাইম</span><span class="stat-label">অ্যাক্সেস</span></div>
+  </div>
+  <div class="price-box">
+    <div class="price-old">মূল মূল্য: ১,২০০ টাকা</div>
+    <div class="price-new"><span>৳</span>৬০০</div>
+    <div class="price-note">⏰ সীমিত সময়ের অফার — এখনই কিনুন, দাম বাড়ছে</div>
+    <button class="btn-buy" onclick="openModal()">🛒 এখনই কোর্সটি কিনুন</button>
+    <div class="payment-icons">
+      <span class="pay-chip bkash">bKash</span>
+      <span class="pay-chip nagad">Nagad</span>
+      <span class="pay-chip">রকেট</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<div class="for-whom-bg">
+  <div class="section">
+    <div class="section-title" style="color:white">এই কোর্স <span>কার জন্য?</span></div>
+    <div class="divider"></div>
+    <div class="cards-grid">
+      <div class="card"><div class="card-icon">👨‍🌾</div><h3>জমির মালিক</h3><p>নিজের জমি নিজে বুঝতে ও রক্ষা করতে চান</p></div>
+      <div class="card"><div class="card-icon">🏠</div><h3>জমি কিনতে চান</h3><p>প্রতারণা ছাড়া নিরাপদে জমি কিনতে চান</p></div>
+      <div class="card"><div class="card-icon">👨‍👩‍👧</div><h3>উত্তরাধিকারী</h3><p>বাবার জমি ভাগ-বাটোয়ারা করতে হবে</p></div>
+      <div class="card"><div class="card-icon">💼</div><h3>উদ্যোক্তা</h3><p>ব্যবসার জন্য জমি লিজ বা ক্রয় করতে চান</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT YOU LEARN -->
+<div style="background: white;">
+  <div class="section">
+    <div class="section-title">এই কোর্সে <span>কী শিখবেন?</span></div>
+    <div class="section-subtitle">৩২টি ভিডিওতে জমি সংক্রান্ত সম্পূর্ণ জ্ঞান</div>
+    <div class="divider"></div>
+    <div class="learn-grid">
+      <div class="learn-item">খতিয়ান পড়া ও অনলাইনে বের করা</div>
+      <div class="learn-item">দাগ নম্বর ও মৌজা ম্যাপ বোঝা</div>
+      <div class="learn-item">আসল ও নকল দলিল চেনার উপায়</div>
+      <div class="learn-item">নামজারি আবেদন অনলাইনে করা</div>
+      <div class="learn-item">অনলাইনে খাজনা পরিশোধ</div>
+      <div class="learn-item">জমি কেনার আগে যা যাচাই করবেন</div>
+      <div class="learn-item">ওয়ারিশ সনদ বানানোর পদ্ধতি</div>
+      <div class="learn-item">বায়না চুক্তি কীভাবে লিখবেন</div>
+      <div class="learn-item">ইসলামী উত্তরাধিকার আইনে ভাগ</div>
+      <div class="learn-item">সব সরকারি ওয়েবসাইট ব্যবহার</div>
+      <div class="learn-item">জমিতে মামলা আছে কিনা যাচাই</div>
+      <div class="learn-item">ডিজিটালি কাগজ সংরক্ষণ পদ্ধতি</div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO LIST -->
+<div style="background: var(--cream);">
+  <div class="section">
+    <div class="section-title">কোর্সের <span>ভিডিও তালিকা</span></div>
+    <div class="section-subtitle">৫টি ভিডিও সম্পূর্ণ ফ্রি — বাকিগুলো কোর্স কেনার পর আনলক হবে</div>
+    <div class="divider"></div>
+
+    <!-- FREE MODULE -->
+    <div class="module-block">
+      <div class="module-header">🆓 ফ্রি মডিউল — পরিচিতি</div>
+      <div class="video-list">
+        <a class="video-item free" href="#" onclick="playFree(event,'vid1')">
+          <div class="video-num">01</div>
+          <div class="video-title">জমি সম্পর্কে মৌলিক ধারণা — যা না জানলেই নয়</div>
+          <span class="video-badge badge-free">▶ ফ্রি</span>
+        </a>
+        <a class="video-item free" href="#" onclick="playFree(event,'vid2')">
+          <div class="video-num">02</div>
+          <div class="video-title">খতিয়ান কী এবং অনলাইনে কীভাবে বের করবেন</div>
+          <span class="video-badge badge-free">▶ ফ্রি</span>
+        </a>
+        <a class="video-item free" href="#" onclick="playFree(event,'vid3')">
+          <div class="video-num">03</div>
+          <div class="video-title">দাগ নম্বর ও মৌজা — জমির ঠিকানা কীভাবে পড়বেন</div>
+          <span class="video-badge badge-free">▶ ফ্রি</span>
+        </a>
+        <a class="video-item free" href="#" onclick="playFree(event,'vid4')">
+          <div class="video-num">04</div>
+          <div class="video-title">ভূমি অফিস — কোথায় যাবেন, কী করবেন, কী বলবেন</div>
+          <span class="video-badge badge-free">▶ ফ্রি</span>
+        </a>
+        <a class="video-item free" href="#" onclick="playFree(event,'vid5')">
+          <div class="video-num">05</div>
+          <div class="video-title">ই-পর্চা ও ই-মিউটেশন — ঘরে বসে জমির কাজ</div>
+          <span class="video-badge badge-free">▶ ফ্রি</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- MODULE A -->
+    <div class="module-block">
+      <div class="module-header">🔒 মডিউল A — জমির পরিচয় ও রেকর্ড</div>
+      <div class="video-list">
+        <div class="video-item" onclick="openModal()"><div class="video-num">06</div><div class="video-title">RS, BS, CS, SA খতিয়ান — পার্থক্য ও ব্যবহার</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">07</div><div class="video-title">মৌজা ম্যাপ — কীভাবে পড়বেন ও বুঝবেন</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">08</div><div class="video-title">পর্চা কী — কত প্রকার, কোনটা কখন লাগে</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">09</div><div class="video-title">ভূমি শ্রেণি — কৃষি, অকৃষি, খাস, ওয়াকফ বিস্তারিত</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">10</div><div class="video-title">জমির পরিমাপ — শতাংশ, বিঘা, কাঠা, একর সহজ হিসাব</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">11</div><div class="video-title">ডিজিটাল ভূমি রেকর্ড — land.gov.bd সম্পূর্ণ গাইড</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+      </div>
+    </div>
+
+    <!-- MODULE B -->
+    <div class="module-block">
+      <div class="module-header">🔒 মডিউল B — দলিল ও মালিকানা</div>
+      <div class="video-list">
+        <div class="video-item" onclick="openModal()"><div class="video-num">12</div><div class="video-title">দলিল কী — কত প্রকার, আসল দলিল চেনার উপায়</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">13</div><div class="video-title">বায়া দলিল — কেন এটা না দেখলেই নয়</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">14</div><div class="video-title">হেবা, বিক্রয় ও ওয়ারিশ দলিল — পার্থক্য ও ব্যবহার</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">15</div><div class="video-title">সাব-রেজিস্ট্রি অফিস — দলিল রেজিস্ট্রি সম্পূর্ণ প্রক্রিয়া</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">16</div><div class="video-title">দলিল অনলাইনে যাচাই — DLRS ও ই-পর্চা গাইড</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">17</div><div class="video-title">ওয়ারিশ সনদ — কীভাবে বানাবেন, কোথায় লাগে</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+      </div>
+    </div>
+
+    <!-- MODULE C -->
+    <div class="module-block">
+      <div class="module-header">🔒 মডিউল C — নামজারি ও মিউটেশন</div>
+      <div class="video-list">
+        <div class="video-item" onclick="openModal()"><div class="video-num">18</div><div class="video-title">নামজারি কী — কেন না করলে বিপদ</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">19</div><div class="video-title">অনলাইনে নামজারি আবেদন — mutation.land.gov.bd গাইড</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">20</div><div class="video-title">নামজারি শুনানি — কী হয়, কীভাবে যাবেন</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">21</div><div class="video-title">নামজারির পর — DCR ও খাজনা রসিদ কী করবেন</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+      </div>
+    </div>
+
+    <!-- MODULE D -->
+    <div class="module-block">
+      <div class="module-header">🔒 মডিউল D — ভূমি কর ও খাজনা</div>
+      <div class="video-list">
+        <div class="video-item" onclick="openModal()"><div class="video-num">22</div><div class="video-title">ভূমি উন্নয়ন কর — কী, কেন, কত দিতে হয়</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">23</div><div class="video-title">অনলাইনে খাজনা পরিশোধ — ldtax.gov.bd সম্পূর্ণ গাইড</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">24</div><div class="video-title">খাজনার রসিদ — কেন সংরক্ষণ করবেন, কোথায় লাগে</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+      </div>
+    </div>
+
+    <!-- MODULE E -->
+    <div class="module-block">
+      <div class="module-header">🔒 মডিউল E — জমি কেনাবেচা ও যাচাই</div>
+      <div class="video-list">
+        <div class="video-item" onclick="openModal()"><div class="video-num">25</div><div class="video-title">জমি কেনার আগে যা যাচাই করবেন — সম্পূর্ণ চেকলিস্ট</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">26</div><div class="video-title">জমিতে মামলা আছে কিনা যাচাই — কোথায়, কীভাবে</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">27</div><div class="video-title">অনলাইনে জমি যাচাই — সব সরকারি ওয়েবসাইট একসাথে</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">28</div><div class="video-title">জমি বিক্রির সময় কী করবেন — বিক্রেতার সম্পূর্ণ গাইড</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">29</div><div class="video-title">বায়না চুক্তি — কীভাবে লিখবেন, কী কী থাকবে</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+      </div>
+    </div>
+
+    <!-- MODULE F -->
+    <div class="module-block">
+      <div class="module-header">🔒 মডিউল F — উত্তরাধিকার ও ভাগবাটোয়ারা</div>
+      <div class="video-list">
+        <div class="video-item" onclick="openModal()"><div class="video-num">30</div><div class="video-title">ইসলামী উত্তরাধিকার আইনে জমির ভাগ — বিস্তারিত</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">31</div><div class="video-title">বন্টননামা দলিল — কীভাবে করবেন, কেন জরুরি</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+        <div class="video-item" onclick="openModal()"><div class="video-num">32</div><div class="video-title">জমির ডিজিটাল ফাইল — সব কাগজ সংরক্ষণের স্মার্ট পদ্ধতি ✨</div><span class="lock-icon">🔒</span><span class="video-badge badge-lock">লক</span></div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top: 20px;">
+      <button class="btn-buy" style="max-width:400px; margin:0 auto;" onclick="openModal()">🔓 সব ভিডিও আনলক করুন — মাত্র ৬০০ টাকায়</button>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<div class="reviews-bg">
+  <div class="section">
+    <div class="section-title">শিক্ষার্থীদের <span>মতামত</span></div>
+    <div class="section-subtitle">যারা কোর্সটি করেছেন তারা কী বলছেন</div>
+    <div class="divider"></div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="reviewer">
+          <div class="avatar">র</div>
+          <div><div class="reviewer-name">রফিকুল ইসলাম</div><div class="reviewer-loc">📍 নারায়ণগঞ্জ</div></div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <div class="review-text">"খতিয়ান কী সেটাই জানতাম না। এই কোর্সের পর নিজেই অনলাইনে বের করলাম। ৬০০ টাকায় এত কিছু শেখা সম্ভব ভাবিনি।"</div>
+      </div>
+      <div class="review-card">
+        <div class="reviewer">
+          <div class="avatar">ক</div>
+          <div><div class="reviewer-name">কামরুন নাহার</div><div class="reviewer-loc">📍 রাজশাহী</div></div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <div class="review-text">"বাবার জমির নামজারি করতে হবে, কিন্তু কীভাবে করব জানতাম না। এই কোর্স দেখে নিজেই অনলাইনে আবেদন করলাম।"</div>
+      </div>
+      <div class="review-card">
+        <div class="reviewer">
+          <div class="avatar">আ</div>
+          <div><div class="reviewer-name">আবুল কালাম</div><div class="reviewer-loc">📍 সিলেট</div></div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <div class="review-text">"জমি কেনার আগে চেকলিস্ট ভিডিওটা দেখে বুঝলাম কত ভুল করতে যাচ্ছিলাম। এই কোর্স লক্ষ টাকা বাঁচিয়ে দিল।"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div style="background: white;">
+  <div class="section">
+    <div class="section-title">সাধারণ <span>প্রশ্নোত্তর</span></div>
+    <div class="divider"></div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">কোর্স কেনার পর কীভাবে ভিডিও দেখব? <span class="faq-arrow">▼</span></div>
+      <div class="faq-answer">পেমেন্ট কনফার্মেশনের পর আপনার মোবাইল নম্বরে WhatsApp/SMS-এ সম্পূর্ণ ভিডিও লিঙ্ক পাঠানো হবে। লাইফটাইম অ্যাক্সেস পাবেন।</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">কোর্সটি কি মোবাইলে দেখা যাবে? <span class="faq-arrow">▼</span></div>
+      <div class="faq-answer">হ্যাঁ, যেকোনো ডিভাইসে — মোবাইল, ট্যাব বা কম্পিউটারে দেখা যাবে। ইন্টারনেট সংযোগ থাকলেই হবে।</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">কোর্সে কি আইনি পরামর্শ দেওয়া হয়? <span class="faq-arrow">▼</span></div>
+      <div class="faq-answer">না। এটি একটি শিক্ষামূলক কোর্স। এখানে জমি সংক্রান্ত বিষয় সহজভাবে বোঝানো হয়। নির্দিষ্ট আইনি পরামর্শের জন্য আইনজীবীর সাথে যোগাযোগ করুন।</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">পেমেন্ট করার পর কত সময়ের মধ্যে অ্যাক্সেস পাব? <span class="faq-arrow">▼</span></div>
+      <div class="faq-answer">সাধারণত ১-৩ ঘণ্টার মধ্যে। অফিস সময়ে (সকাল ৯টা - রাত ১০টা) আরও দ্রুত পাবেন।</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">কোর্সটি কি রিফান্ড করা যাবে? <span class="faq-arrow">▼</span></div>
+      <div class="faq-answer">কোর্সের মান নিশ্চিত করা হয়েছে। তবে কোনো সমস্যা হলে আমাদের সাথে যোগাযোগ করুন, আমরা সমাধান করব।</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div class="modal-overlay" id="payModal" onclick="closeModalOutside(event)">
+  <div class="modal" style="position:relative">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+
+    <!-- Payment Form -->
+    <div id="payForm">
+      <h2>💳 কোর্স কিনুন</h2>
+      <div class="pay-tabs">
+        <div class="pay-tab bkash-tab active" onclick="switchTab('bkash')">bKash</div>
+        <div class="pay-tab nagad-tab" onclick="switchTab('nagad')">Nagad</div>
+      </div>
+
+      <div class="pay-info">
+        <div style="font-size:13px; color: var(--gray)">পেমেন্ট করুন এই নম্বরে</div>
+        <div class="pay-number" id="payNumber">01XXXXXXXXX</div>
+        <div style="font-size:13px; color: var(--gray); margin-bottom:4px">Send Money করুন</div>
+        <div class="pay-amount">৳ ৬০০</div>
+      </div>
+
+      <div class="pay-steps">
+        <p><strong>ধাপ ১:</strong> bKash/Nagad অ্যাপ খুলুন → Send Money</p>
+        <p><strong>ধাপ ২:</strong> উপরের নম্বরে ৬০০ টাকা পাঠান</p>
+        <p><strong>ধাপ ৩:</strong> Transaction ID নিচে লিখুন</p>
+        <p><strong>ধাপ ৪:</strong> Submit করুন — অ্যাক্সেস পাবেন</p>
+      </div>
+
+      <div class="form-group">
+        <label>আপনার নাম *</label>
+        <input type="text" id="buyerName" placeholder="পূর্ণ নাম লিখুন">
+      </div>
+      <div class="form-group">
+        <label>মোবাইল নম্বর *</label>
+        <input type="tel" id="buyerPhone" placeholder="যে নম্বরে লিঙ্ক পাঠাব">
+      </div>
+      <div class="form-group">
+        <label>Transaction ID *</label>
+        <input type="text" id="txnId" placeholder="যেমন: 8FG3H2K1">
+      </div>
+      <button class="btn-confirm" onclick="submitPayment()">✅ কনফার্ম করুন</button>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-msg" id="successMsg">
+      <div class="success-icon">🎉</div>
+      <h3>আবেদন সফল হয়েছে!</h3>
+      <p>আপনার তথ্য পেয়েছি। <strong>১-৩ ঘণ্টার মধ্যে</strong> আপনার মোবাইলে কোর্সের লিঙ্ক পাঠানো হবে।</p>
+      <br>
+      <p style="color: var(--green); font-weight: 600;">ধন্যবাদ! কোর্সটি উপভোগ করুন। 🌿</p>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar">
+  <div class="sticky-price">
+    <strong>৳৬০০</strong>
+    <span>৩২টি ভিডিও | লাইফটাইম অ্যাক্সেস</span>
+  </div>
+  <button class="btn-sticky" onclick="openModal()">এখনই কিনুন 🛒</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© ২০২৪ বাংলাদেশ ভূমি মাস্টারক্লাস | সকল স্বত্ব সংরক্ষিত</p>
+  <p style="margin-top:8px">যোগাযোগ: <a href="tel:01XXXXXXXXX">01XXXXXXXXX</a> | <a href="mailto:info@example.com">info@example.com</a></p>
+  <p style="margin-top:8px; font-size:11px; opacity:0.5">এটি একটি শিক্ষামূলক কোর্স। আইনি পরামর্শের বিকল্প নয়।</p>
+</footer>
+
+<script>
+  // Payment numbers - CHANGE THESE
+  const payNumbers = {
+    bkash: '01700-000000',
+    nagad: '01700-000000'
+  };
+
+  function openModal() {
+    document.getElementById('payModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('payModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function closeModalOutside(e) {
+    if (e.target.id === 'payModal') closeModal();
+  }
+
+  function switchTab(type) {
+    document.querySelectorAll('.pay-tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById('payNumber').textContent = payNumbers[type];
+  }
+  // Set default
+  document.getElementById('payNumber').textContent = payNumbers.bkash;
+
+  function submitPayment() {
+    const name = document.getElementById('buyerName').value.trim();
+    const phone = document.getElementById('buyerPhone').value.trim();
+    const txn = document.getElementById('txnId').value.trim();
+    if (!name || !phone || !txn) {
+      alert('সব তথ্য পূরণ করুন।');
+      return;
+    }
+    document.getElementById('payForm').style.display = 'none';
+    document.getElementById('successMsg').classList.add('show');
+  }
+
+  function playFree(e, vidId) {
+    e.preventDefault();
+    // Replace with actual YouTube links
+    const links = {
+      vid1: 'https://www.youtube.com/watch?v=YOUR_VIDEO_ID_1',
+      vid2: 'https://www.youtube.com/watch?v=YOUR_VIDEO_ID_2',
+      vid3: 'https://www.youtube.com/watch?v=YOUR_VIDEO_ID_3',
+      vid4: 'https://www.youtube.com/watch?v=YOUR_VIDEO_ID_4',
+      vid5: 'https://www.youtube.com/watch?v=YOUR_VIDEO_ID_5',
+    };
+    window.open(links[vidId], '_blank');
+  }
+
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    item.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
